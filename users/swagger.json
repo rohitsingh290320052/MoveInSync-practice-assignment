@@ -1,0 +1,66 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Users Service",
+      "description": "API documentation for the Users service"
+    },
+    "host": "localhost:3003",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/users": {
+        "get": {
+          "summary": "Get all users",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new user",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NewUser"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "User created"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "joinedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "NewUser": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string" }
+        }
+      }
+    }
+  }
+  

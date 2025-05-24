@@ -1,0 +1,68 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Orders Service",
+      "description": "API documentation for the Orders service"
+    },
+    "host": "localhost:3002",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/orders": {
+        "get": {
+          "summary": "Get all orders",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Order"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new order",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NewOrder"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Order created"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "bookId": { "type": "string" },
+          "userId": { "type": "string" },
+          "quantity": { "type": "integer" },
+          "date": { "type": "string", "format": "date-time" }
+        }
+      },
+      "NewOrder": {
+        "type": "object",
+        "properties": {
+          "bookId": { "type": "string" },
+          "userId": { "type": "string" },
+          "quantity": { "type": "integer" }
+        }
+      }
+    }
+  }
+  

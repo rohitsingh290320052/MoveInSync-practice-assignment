@@ -1,0 +1,64 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Books Service",
+      "description": "API documentation for the Books service"
+    },
+    "host": "localhost:3001",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/books": {
+        "get": {
+          "summary": "Get all books",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Book"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new book",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NewBook"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Book added"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "author": { "type": "string" }
+        }
+      },
+      "NewBook": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "author": { "type": "string" }
+        }
+      }
+    }
+  }
+  
